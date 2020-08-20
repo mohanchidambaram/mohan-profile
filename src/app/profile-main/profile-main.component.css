@@ -1,0 +1,35 @@
+.drawer-container {
+    width: auto;
+    height: auto;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+}
+  
+.main-page-content {
+    display: flex;
+    height: 100%;
+    width: auto;
+}
+  
+.side-menu-container {
+    padding-top: 16px;
+    background-color: #3f51b5;
+}
+.fill-space {
+    flex: 1 1 auto;
+}
+.menu-nav-button {
+    margin-right: 16px;
+}
+.home-content {
+    width: -webkit-fill-available;
+}
+.example-button-container {
+    display: flex;
+    justify-content: right;
+    width: auto;
+    direction: rtl;
+    margin: 20px
+}
+li ::marker{
+    display: none;
+}

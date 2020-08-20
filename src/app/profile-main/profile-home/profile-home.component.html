@@ -1,0 +1,209 @@
+<div class="header">
+    <mat-card class="header-card">
+        <mat-card-header>
+            <div mat-card-avatar class="header-card-image"></div>
+            <mat-card-title class="card-title">{{this.text.name}}</mat-card-title>
+            <mat-card-subtitle class="card-sub-title">{{this.text.jobTitle}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="card-content">
+            <p>{{this.content.summaryContent1}} {{this.experience.annamExp['year']}} {{this.text.years}} and {{this.experience.annamExp['month']}} {{this.text.months}} {{this.content.summaryContent2}}</p>
+        </mat-card-content>
+    </mat-card>
+</div>
+<div class="container">
+    <mat-tab-group dynamicHeight class="tam-items-class">
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon class="tab-item-icon">psychology</mat-icon>
+            {{this.text.tabItemSkills}}
+          </ng-template>
+          <app-skill-info-slider header="Skill Set">
+            <cdk-step *ngFor="let skillData of skillSetList">
+              <h3>{{skillData['skill']}}</h3>
+              <div class="skill-set-detail">
+                <mat-list role="list">
+                  <mat-list-item role="listitem">
+                    <span class="bolder-span">{{this.text.relExpLabel}}{{this.text.colonSymbol}}</span>
+                    {{skillData['rel_exp']['year']}} {{this.text.years}} {{skillData['rel_exp']['month']}} {{this.text.months}}
+                  </mat-list-item>
+                  <mat-list-item role="listitem">
+                    <span class="bolder-span">{{this.text.hasCertLabel}}{{this.text.colonSymbol}}</span>
+                    {{skillData['isCert']}}
+                  </mat-list-item>
+                  <mat-list-item role="listitem">
+                    <span class="bolder-span">{{this.text.levelLabel}}{{this.text.colonSymbol}}</span>
+                    <span *ngFor="let count of skillData['level']">
+                      <mat-icon class="list-item-icon">stars</mat-icon>
+                    </span>
+                    <!-- <div class="radio-button-container">
+                      <mat-radio-group>
+                          <mat-radio-button value=1 disabled="True">{{this.text.levelBeginner}}</mat-radio-button>
+                          <mat-radio-button value=2 disabled="True">{{this.text.levelGood}}</mat-radio-button>
+                          <mat-radio-button value=3 disabled="True">{{this.text.levelExpert}}</mat-radio-button>
+                      </mat-radio-group>
+                  </div>  -->
+                  </mat-list-item>
+                  <mat-list-item role="listitem">
+                    <span class="bolder-span">{{this.text.categoryLabrl}}{{this.text.colonSymbol}}</span>
+                    {{skillData['category']}}
+                  </mat-list-item>
+                </mat-list>
+              </div>
+            </cdk-step>
+          </app-skill-info-slider>
+        </mat-tab>
+      
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon class="tab-item-icon">work</mat-icon>
+            {{this.text.tabItemWorkHistory}}
+          </ng-template>
+          <div class="expand-collapse-buttons">
+            <button mat-button [matTooltip]="this.text.collapseAllButton" (click)="accordion.closeAll()">{{this.text.collapseAllButton}}</button>
+            <button mat-button [matTooltip]="this.text.expandAllButton" (click)="accordion.openAll()">{{this.text.expandAllButton}}</button>
+          </div>
+          <mat-accordion class="accordian-headers" multi>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{this.content.perfMgmtProject}}
+                </mat-panel-title>
+                <mat-panel-description>
+                  {{this.text.currentOrganization}}
+                  <span>{{this.content.perfMgmtPeriod}}</span>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <mat-list role="list">
+                <mat-list-item role="listitem"  *ngFor="let rolePerfMgmt of rolePerfMgmtList">
+                  <mat-icon class="list-item-icon">stars</mat-icon>{{rolePerfMgmt}}
+                </mat-list-item>
+              </mat-list>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{this.content.mfgProject}}
+                </mat-panel-title>
+                <mat-panel-description>
+                  {{this.text.currentOrganization}}
+                  <span>{{this.content.mfgPeriod}}</span>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <mat-list role="list">
+                <mat-list-item role="listitem"  *ngFor="let roleMfg of roleMfgList">
+                  <mat-icon class="list-item-icon">stars</mat-icon>{{roleMfg}}
+                </mat-list-item>
+              </mat-list>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{this.content.annamProject}}
+                </mat-panel-title>
+                <mat-panel-description>
+                  {{this.text.previousOrganization}}
+                  <span>{{this.content.annamPeriod}}</span>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <mat-list role="list">
+                <mat-list-item role="listitem"  *ngFor="let roleAnnam of roleAnnamList">
+                  <mat-icon class="list-item-icon">stars</mat-icon>{{roleAnnam}}
+                </mat-list-item>
+              </mat-list>
+            </mat-expansion-panel>
+            
+          </mat-accordion>          
+        </mat-tab>
+      
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon class="tab-item-icon">school</mat-icon>
+            {{this.text.tabItemAcademics}}
+          </ng-template>
+      
+          <table mat-table
+            [dataSource]="academicDataSource" multiTemplateDataRows
+            class="mat-elevation-z8">
+            <ng-container matColumnDef="{{column}}" *ngFor="let column of academicColumns">
+              <th mat-header-cell *matHeaderCellDef> {{this.columnLabelMap[column]}} </th>
+              <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+            </ng-container>
+            <ng-container matColumnDef="expandedDetail">
+              <td mat-cell *matCellDef="let element" [attr.colspan]="academicColumns.length">
+                <div class="academic-element-detail"
+                    [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                    <mat-list role="list">
+                      <mat-list-item role="listitem">
+                        <span class="bolder-span">{{this.text.courseLabel}}{{this.text.colonSymbol}}</span>
+                        {{element.courseFull}}
+                      </mat-list-item>
+                      <mat-list-item role="listitem">
+                        <span class="bolder-span">{{this.text.instituteLabel}}{{this.text.colonSymbol}}</span>
+                        {{element.institute}}, {{element.location}}
+                      </mat-list-item>
+                      <mat-list-item role="listitem">
+                        <span class="bolder-span">{{this.text.scoreLabel}}{{this.text.colonSymbol}}</span>
+                        {{element.score}}{{this.text.percentageSymbol}}
+                      </mat-list-item>
+                      <mat-list-item role="listitem">
+                        <span class="bolder-span">{{this.text.bestThingLabel}}{{this.text.colonSymbol}}</span>
+                        {{element.best}}
+                      </mat-list-item>
+                    </mat-list>
+                </div>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="academicColumns"></tr>
+            <tr mat-row *matRowDef="let element; columns: academicColumns;"
+                class="academic-element-row"
+                [class.academic-expanded-row]="expandedElement === element"
+                (click)="expandedElement = expandedElement === element ? null : element">
+            </tr>
+            <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="academic-detail-row"></tr>
+          </table>         
+        </mat-tab>
+
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon class="tab-item-icon">grading</mat-icon>
+            {{this.text.tabItemCert}}
+          </ng-template>
+          <h3>{{this.text.certifications}}</h3>
+          <mat-list role="list">
+            <mat-list-item role="listitem"  *ngFor="let cert of certList">
+              <mat-icon class="list-item-icon">list_alt</mat-icon>{{cert}}
+            </mat-list-item>
+          </mat-list>
+          <h3>{{this.text.courses}}</h3>
+          <mat-list role="list">
+            <mat-list-item role="listitem"  *ngFor="let course of courseList">
+              <mat-icon class="list-item-icon">school</mat-icon>{{course}}
+            </mat-list-item>
+          </mat-list>
+        </mat-tab>
+
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon class="tab-item-icon">emoji_people</mat-icon>
+            {{this.text.tabItemOthers}}
+          </ng-template>
+          <div>
+            <span>Choose to View : </span>
+            <mat-form-field>
+              <mat-select [(value)]="selectedInterest">
+                <mat-option *ngFor="let option of interestSelectList" [value]="option.code">{{option.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div>
+            <h3>{{selectedInterest === 'achieve' ? this.text.achieveHeader : this.text.activityHeader }}</h3>
+            <mat-list role="list">
+              <mat-list-item role="listitem"  *ngFor="let interest of selectedInterest === 'achieve' ? achievementList : activityList">
+                <mat-icon class="list-item-icon">{{selectedInterest === 'achieve' ? 'verified' : 'local_florist'}}</mat-icon>{{interest}}
+              </mat-list-item>
+            </mat-list>
+          </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>

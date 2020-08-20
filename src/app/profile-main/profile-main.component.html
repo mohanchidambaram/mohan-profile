@@ -1,0 +1,38 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button class="menu-nav-button" (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>{{this.text.profile}}</span>
+    <span class="fill-space"></span>
+    <span>{{this.content.quoteContent}}</span>
+</mat-toolbar>
+<mat-drawer-container class="drawer-container" autosize>
+    <mat-drawer #drawer class="side-menu-container" mode="side">
+        <mat-selection-list #menuItems [multiple]="false" value=this.text.sideMenuHome>
+            <mat-list-option *ngFor="let menu of menuValues" [value]="menu" (click)="drawer.toggle()">
+              {{menu}}
+            </mat-list-option>
+        </mat-selection-list>
+    </mat-drawer>
+  
+    <div class="main-page-content">
+      <app-profile-home class="home-content" *ngIf="this.text.sideMenuPersonal !== menuItems.selectedOptions.selected[0]?.value
+      && this.text.sideMenuEmployment !== menuItems.selectedOptions.selected[0]?.value
+      && this.text.sideMenuContact !== menuItems.selectedOptions.selected[0]?.value" >
+      </app-profile-home>
+      <app-profile-personal class="home-content" *ngIf="this.text.sideMenuPersonal === menuItems.selectedOptions.selected[0]?.value" >
+      </app-profile-personal>
+      <app-profile-employment class="home-content" *ngIf="this.text.sideMenuEmployment === menuItems.selectedOptions.selected[0]?.value" >
+      </app-profile-employment>
+      <app-profile-contact class="home-content" *ngIf="this.text.sideMenuContact === menuItems.selectedOptions.selected[0]?.value" >
+      </app-profile-contact>
+    </div>
+    <div class="example-button-container">
+      <a href='https://gitlab.com/mohanch/mohan-profile/-/raw/master/src/resources/files/MohanChidambaram-FullStackDeveloper.pdf?inline=false'>
+      <button mat-fab color="warn" [matTooltip]="this.text.downloadHint">
+        <mat-icon>get_app</mat-icon>
+      </button>
+      </a>
+    </div>
+</mat-drawer-container>
+  

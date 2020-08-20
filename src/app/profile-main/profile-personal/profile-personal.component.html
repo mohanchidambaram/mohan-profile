@@ -1,0 +1,9 @@
+<div class="personal-data-div">
+    <h3>{{this.text.sideMenuPersonal}}{{this.text.colonSymbol}}</h3>
+    <mat-list class="personal-list-div" role="list">
+        <mat-list-item role="listitem"  *ngFor="let personalInfo of personalInfoList">
+            <span class="bolder-span">{{personalInfo['key']}}{{this.text.colonSymbol}}</span>
+            <span>{{personalInfo['value']}}</span>
+        </mat-list-item>
+    </mat-list>
+</div>

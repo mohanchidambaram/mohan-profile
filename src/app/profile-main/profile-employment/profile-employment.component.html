@@ -1,0 +1,9 @@
+<div class="employment-data-div">
+    <h3>{{this.text.sideMenuEmployment}}{{this.text.colonSymbol}}</h3>
+    <mat-list role="list" class="employment-list-div">
+        <mat-list-item role="listitem"  *ngFor="let employmentInfo of employmentInfoList">
+            <span class="bolder-span">{{employmentInfo['key']}}{{this.text.colonSymbol}}</span>
+            <span>{{employmentInfo['value']}}</span>
+        </mat-list-item>
+    </mat-list>
+</div>

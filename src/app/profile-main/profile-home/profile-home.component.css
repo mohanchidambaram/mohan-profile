@@ -1,0 +1,92 @@
+.fill-space {
+    flex: 1 1 auto;
+}
+.header {
+    width: auto;
+    height: fit-content;
+    background-color: #f5f5f5;
+    margin-left: 16px;
+    margin-right: 16px;
+}
+.tam-items-class {
+    margin-left: 16px;
+    margin-right: 16px;
+}
+.tab-item-icon {
+    margin-right: 8px;
+}
+.expand-collapse-buttons {
+    margin-top: 8x;
+    margin-bottom: 8x;
+    direction: rtl;
+}
+.header-card {
+    max-width: fit-content;
+}
+.card-title{
+    font-size: xx-large;
+    font: bolder;
+}
+.card-sub-title {
+    font-size: x-large;
+    font: bold;
+}
+.card-content {
+    font-size: larger;
+}
+.header-card-image {
+    background-image: url('../../../resources/files/MohanChidambaram.jpeg');
+    background-size: cover;
+    height: 100px;
+    width: 100px;
+}
+  
+  
+.accordian-headers .mat-expansion-panel-header-title,
+.accordian-headers .mat-expansion-panel-header-description {
+    flex-basis: 0;
+}
+  
+.accordian-headers .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+}
+  
+.list-item-icon {
+  margin-right: 8px;
+}
+
+table {
+    width: 100%;
+}  
+tr.academic-detail-row {
+  height: 0;
+}
+tr.academic-element-row:not(.academic-expanded-row):hover {
+    background: whitesmoke;
+}
+  
+tr.academic-element-row:not(.academic-expanded-row):active {
+    background: #efefef;
+}
+  
+.academic-element-row td {
+    border-bottom-width: 0;
+}
+.academic-element-detail {
+    overflow: hidden;
+    display: flex;
+}
+.bolder-span {
+  font-weight: bold;
+}
+.skill-set-detail {
+    width: fit-content;
+    flex-basis: 0;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 56px;
+}
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+}

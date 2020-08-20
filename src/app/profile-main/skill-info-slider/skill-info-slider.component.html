@@ -1,0 +1,14 @@
+<section class="info-slider">
+    <header *ngIf="header">
+        <div class="button-class">
+            <button class="ripple" matTooltip="Previous" cdkStepperPrevious>
+                <mat-icon class="tab-item-icon">chevron_left</mat-icon>
+            </button>
+            <h3>{{header}}</h3>
+            <button class="ripple" matTooltip="Next" cdkStepperNext>
+                <mat-icon class="tab-item-icon">chevron_right</mat-icon>
+            </button>
+        </div>
+    </header>
+    <ng-container [ngTemplateOutlet]="selected.content"></ng-container>
+</section>
